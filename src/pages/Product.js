@@ -64,7 +64,7 @@ const Product = () => {
               </div>
 
 
-              <div className="w-full md:w-[30%] py-4 px-3 bg-white">
+              <div className="w-full md:w-[35%] py-4 px-3 bg-white">
                 <div className="flex flex-col gap-3">
                   <h1>Offered By</h1>
                   <img
@@ -80,14 +80,14 @@ const Product = () => {
                           <Avatar src={prd.product?.user.profilePicture ? prd.product?.user.profilePicture : man} size={64} />
                           <div className="flex flex-col">
                             <p className="text-bold text-xl">{prd.product.user.firstName} {prd.product.user.lastName}</p>
-                            <span className="text-gray-500 text-sm">{prd.product.user.email}</span>
+                            {/* <span className="text-gray-500 text-sm">{prd.product.user.email}</span> */}
                             <p className="text-gray-500">{prd.product.user.position}</p>
                           </div>
                         </>
                       )
                     }
                   </div>
-                  <div className="flex flex-col items-start">
+                  <div className="flex flex-col items-start relative">
                     {
                       prd.product.company && prd.product.company.address && (
                        <>
@@ -103,8 +103,13 @@ const Product = () => {
                           <span>{prd.product.company.address.country.name}</span>
                         </div>
 
-                        <div className='flex items-scenter justify-center gap-3 w-full'>
-                          <Gmap />
+                        <div className='flex items-scenter justify-center gap-3 w-full h-96 mt-3'>
+                          <Gmap 
+                            lat={prd.product.company?.address.latitude}
+                            long={prd.product.company?.address.longitude}
+                            country={prd.product.company.address.country.name}
+                            city={prd.product.company.address.city.name}
+                          />
                         </div>
                        </>
                       )
