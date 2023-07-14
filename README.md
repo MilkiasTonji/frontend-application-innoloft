@@ -5,5 +5,7 @@ Frontend application challange given by innoloft company. The web application is
   1. run **npm install or yarn install**
   2. run a project with **npm start** to start a local server
   3. go to your browser type **localhost:3000/** to view project's dashboard
+  4. navigate to **localhost:3000/product** to view the product
+  5. navigate to **localhost:3000/product/edit** to view and edit the product
       
 # frontend-application-innoloft

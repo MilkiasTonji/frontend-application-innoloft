@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 import axios from 'axios';
 
-const BASE_URL = 'https://api-test.innoloft.com/'
+const BASE_URL = 'https://api-test.innoloft.com/configuration/'
 
 const initialState = {
     loading: false,
@@ -12,7 +12,7 @@ const initialState = {
 
 const fetchConfigService = async (appId) => {
     try {
-        const response = await axios.get(`${BASE_URL}configuration/${appId}/`);
+        const response = await axios.get(`${BASE_URL}/${appId}/`);
         if(response.data){
             return response.data;  
         }
@@ -23,6 +23,7 @@ const fetchConfigService = async (appId) => {
 
 export const fetchConfiguration = createAsyncThunk('config/fetchConfiguration', async (appId, {rejectWithValue}) => {
     try {
+        
         const response = await fetchConfigService(appId);
         return response
     } catch (error) {
@@ -42,13 +43,13 @@ const configSlice = createSlice({
             })
             .addCase(fetchConfiguration.fulfilled, (state, action) => {
                 state.loading = false
-                state.product = action.payload
+                state.config = action.payload
                 state.error = ""
             })
             .addCase(fetchConfiguration.rejected, (state, action) => {
                 state.loading = false
                 state.error = action.payload
-                state.product = ""
+                state.config = ""
             })
             
     }
@@ -56,7 +57,7 @@ const configSlice = createSlice({
 
 
 export const getConfiguration = (state) => state.config
-export const getLoaging = (state) => state.loading
+export const getConfigLoaging = (state) => state.loading
 
 
 export default configSlice.reducer

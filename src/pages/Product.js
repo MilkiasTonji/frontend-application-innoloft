@@ -18,6 +18,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Loader from '../components/Loader';
 import Gmap from '../components/Gmap';
+import { fetchConfiguration, getConfigLoaging, getConfiguration } from '../features/configSlice';
 
 
 const Product = () => {
@@ -26,11 +27,15 @@ const Product = () => {
   const dispatch = useDispatch()
   const prd = useSelector(getProduct);
   const loading = useSelector(getLoaging);
+  const config = useSelector(getConfiguration);
+  const confLoading = useSelector(getConfigLoaging);
+
+  const _appId = process.env.REACT_APP_APP_ID
 
   useEffect(() => {
     dispatch(fetchProduct())
-
-    // console.log("============== prd ==============", prd)
+    let appId = _appId ? _appId : 1;
+    dispatch(fetchConfiguration(appId))
 
   }, [loading, dispatch])
 
@@ -72,21 +77,24 @@ const Product = () => {
                     alt="something"
                     className="w-[80%] h-full bg-white"
                   />
+                 {
+                  Object.keys(config?.config).length > 0 && config?.config?.hasUserSection &&
                   <div className="py-2 flex items-start gap-3">
-                    {
-                      prd.product && prd.product.user &&
-                      (
-                        <>
-                          <Avatar src={prd.product?.user.profilePicture ? prd.product?.user.profilePicture : man} size={64} />
-                          <div className="flex flex-col">
-                            <p className="text-bold text-xl">{prd.product.user.firstName} {prd.product.user.lastName}</p>
-                            {/* <span className="text-gray-500 text-sm">{prd.product.user.email}</span> */}
-                            <p className="text-gray-500">{prd.product.user.position}</p>
-                          </div>
-                        </>
-                      )
-                    }
-                  </div>
+                  {
+                    prd.product && prd.product.user &&
+                    (
+                      <>
+                        <Avatar src={prd.product?.user.profilePicture ? prd.product?.user.profilePicture : man} size={64} />
+                        <div className="flex flex-col">
+                          <p className="text-bold text-xl">{prd.product.user.firstName} {prd.product.user.lastName}</p>
+                          {/* <span className="text-gray-500 text-sm">{prd.product.user.email}</span> */}
+                          <p className="text-gray-500">{prd.product.user.position}</p>
+                        </div>
+                      </>
+                    )
+                  }
+                </div> 
+                 }
                   <div className="flex flex-col items-start relative">
                     {
                       prd.product.company && prd.product.company.address && (

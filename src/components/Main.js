@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Breadcrumb } from 'antd';
 import { AiOutlineHome } from "react-icons/ai";
+import { fetchConfiguration, getConfigLoaging, getConfiguration } from "../features/configSlice";
 
 
 const Main = ({ children, className = "", type }) => {
