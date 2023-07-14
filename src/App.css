@@ -1,0 +1,23 @@
+.custom-select .ant-select-selection {
+    background-color: transparent !important;
+    border:none !important;
+    color: white;
+  }
+
+  .custom-select  .ant-select-selector {
+    background-color: transparent !important;/* Replace 'red' with your desired background color */
+    color: white; /* Replace 'white' with your desired text color */
+    border:none !important;
+
+  }
+  
+  .custom-select .ant-select-arrow .anticon{
+    color: white; 
+    font-size: 15px;
+  }
+
+  .custom-select .ant-select-dropdown {
+    background-color: red; /* Replace 'red' with your desired background color */
+  }
+
+  

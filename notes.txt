@@ -1,0 +1,8 @@
+github repo link
+https://github.com/innoloft/Frontend-Application
+
+Api end point
+https://api-test.innoloft.com/product/6781/
+
+Configuration end point
+https://api-test.innoloft.com/configuration/1/
