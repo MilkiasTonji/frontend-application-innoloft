@@ -8,6 +8,10 @@ import { store } from './store'
 import { Provider } from 'react-redux'
 import 'leaflet/dist/leaflet.css';
 
+import dotenv from 'dotenv';
+dotenv.config();
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
