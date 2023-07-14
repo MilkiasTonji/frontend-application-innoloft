@@ -17,6 +17,7 @@ import man from "../assets/For-Men.jpg";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Loader from '../components/Loader';
+import Gmap from '../components/Gmap';
 
 
 const Product = () => {
@@ -100,6 +101,10 @@ const Product = () => {
                           <span>{prd.product.company.address.zipCode}</span>
                           <span>{prd.product.company.address.city.name},</span>
                           <span>{prd.product.company.address.country.name}</span>
+                        </div>
+
+                        <div className='flex items-scenter justify-center gap-3 w-full'>
+                          <Gmap />
                         </div>
                        </>
                       )
